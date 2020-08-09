@@ -21,18 +21,34 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::group(['prefix' => 'teacher'], function () {
-        /* Route GET */
-        Route::get('/', 'Administrator\TeacherController@index')->name('indexTeacher');
-        Route::get('/edit/{id}', 'Administrator\TeacherController@edit');
-        Route::get('/delete/{id}', 'Administrator\TeacherController@delete');
 
-        /* Route POST */
-        Route::post('/create-teacher', 'Administrator\TeacherController@create')->name('createTeacher');
-        Route::post('/update-teacher', 'Administrator\TeacherController@update')->name('updateTeacher');
+Route::group(['prefix' => '/admin/teacher'], function () {
+    /* Route GET */
+    Route::get('/', 'Administrator\TeacherController@index')->name('indexTeacher');
+    Route::get('/edit/{id}', 'Administrator\TeacherController@edit');
+    Route::get('/delete/{id}', 'Administrator\TeacherController@delete');
 
-        /* DataTable */
-        Route::get('/json-teacher', 'Administrator\TeacherController@dataTable')->name('jsonTeacher');
-    });
+    /* Route POST */
+    Route::post('/create-teacher', 'Administrator\TeacherController@create')->name('createTeacher');
+    Route::post('/update-teacher', 'Administrator\TeacherController@update')->name('updateTeacher');
+
+    /* DataTable */
+    Route::get('/json-teacher', 'Administrator\TeacherController@dataTable')->name('jsonTeacher');
+});
+
+/* Route Student */
+Route::group(['prefix' => '/admin/student'], function () {
+    /* Route GET */
+    Route::get('/', 'Administrator\StudentController@index')->name('indexStudent');
+    Route::get('/edit/{id}', 'Administrator\StudentController@edit');
+    Route::get('/delete/{id}', 'Administrator\StudentController@delete');
+
+    /* Route POST */
+    Route::post('/create-student', 'Administrator\StudentController@create')->name('createStudent');
+    Route::post('/update-student', 'Administrator\StudentController@update')->name('updateStudent');
+
+    /* DataTable */
+    Route::get('/json-student', 'Administrator\StudentController@dataTable')->name('jsonStudent');
+    /* Dropdown json */
+    Route::get('/list-classroom', 'Administrator\StudentController@classroom')->name('listClassroom');
 });
