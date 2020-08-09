@@ -57,7 +57,10 @@ class TeacherController extends Controller
         $teacher = Teacher::findOrFail($id);
         $user = User::findOrFail($teacher->id)->first();
 
-        $items = collect($teacher)->merge($user);
+        $items = collect($teacher)->merge([
+            'status'    => $user->status,
+            'email'     => $user->email,
+        ]);
 
         return response()->json($items, 200);
     }
@@ -72,7 +75,6 @@ class TeacherController extends Controller
             User::findOrFail($request->id)->update([
                 'name'          => $request->name,
                 'email'         => $request->email,
-                'role'          => 'teacher',
                 'status'        => $request->status,
             ]);
 
@@ -94,7 +96,6 @@ class TeacherController extends Controller
                 'name'          => $request->name,
                 'email'         => $request->email,
                 'password'      => Hash::make($request->password),
-                'role'          => 'teacher',
                 'status'        => $request->status,
             ]);
 
