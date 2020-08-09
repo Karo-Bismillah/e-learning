@@ -46,7 +46,7 @@
             <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="true" aria-expanded="false">
                 <img class="user-avatar rounded-circle mr-2"
-                    src="{{ url('assets/images/avatars/0.jpg') }}" alt="User Avatar">
+                    src="{{ url('assets/images/user.png') }}" alt="User Avatar">
                 <span class="d-none d-md-inline-block">Sierra Brooks</span>
             </a>
             <div class="dropdown-menu dropdown-menu-small">
