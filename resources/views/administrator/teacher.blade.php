@@ -276,6 +276,7 @@
     });
 
     function resetForm() {
+        $('#message').html("")
         document.getElementById("formTeacher").reset();
         $('#action').val('create');
         $('#actionLabel').text('Create');
