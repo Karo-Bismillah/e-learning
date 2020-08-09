@@ -17,7 +17,7 @@ class CreateSubjectMattersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('teacher_id');
-            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('classroom_id');
             $table->string('name');
             $table->longText('information')->nullable();
             $table->string('youtube')->nullable();
