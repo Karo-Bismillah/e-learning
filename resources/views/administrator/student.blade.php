@@ -324,8 +324,10 @@
         $('#message').html("")
         document.getElementById("formStudent").reset();
         $('#action').val('create');
-        $('#action').val('Create');
+        $('#action').text('Create');
         $('#actionLabel').text('Create New Student');
+        $('#classroom_id').val('No Selected');
+        $('#select2-classroom_id-container').text('No Selected');
     }
 </script>
 
