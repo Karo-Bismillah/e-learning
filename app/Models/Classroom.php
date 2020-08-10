@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
@@ -12,5 +12,10 @@ class Classroom extends Model
     public function student()
     {
         return $this->hasOne(Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
     }
 }
