@@ -50,7 +50,7 @@ class StudentController extends Controller
     {
         /* It's really bad, but I haven't found any other way */
         $student = Student::findOrFail($id);
-        $user = User::findOrFail($student->id)->first();
+        $user = User::findOrFail($student->user_id);
         $class = Classroom::findOrFail($student->classroom_id);
         $items = collect($student)->merge([
             'status'    => $user->status,
@@ -62,18 +62,17 @@ class StudentController extends Controller
     /* Update */
     public function update(Request $request)
     {
-        $this->validation($request->all()); // Validate request
+        $student = Student::findOrFail($request->id);
+
+        $this->validation($request->all(), $student->user_id); // Validate request
         if ($request->password == 'no changes') { //Check if password no changes
-            User::findOrFail($request->id)->update([
+            User::findOrFail($student->user_id)->update([
                 'name'              => $request->name,
                 'email'             => $request->email,
                 'status'            => $request->status,
             ]);
 
-            /* Find user_id using email */
-            $user_id = User::where('email', $request->email)->first();
-
-            Student::findOrFail($user_id->id)->update([
+            Student::findOrFail($student->id)->update([
                 'name'          => $request->name,
                 'classroom_id'  => $request->classroom_id,
                 'gender'        => $request->gender,
@@ -81,17 +80,14 @@ class StudentController extends Controller
                 'address'       => $request->address,
             ]);
         } else {
-            User::findOrFail($request->id)->update([
+            User::findOrFail($student->user_id)->update([
                 'name'              => $request->name,
                 'email'             => $request->email,
                 'password'          => Hash::make($request->password),
                 'status'            => $request->status,
             ]);
 
-            /* Find user_id using email */
-            $user_id = User::where('email', $request->email)->first();
-
-            Student::findOrFail($user_id->id)->update([
+            Student::findOrFail($student->id)->update([
                 'name'          => $request->name,
                 'classroom_id'  => $request->classroom_id,
                 'gender'        => $request->gender,
@@ -105,20 +101,21 @@ class StudentController extends Controller
     /* Delete */
     public function delete($id) // Delete function
     {
-        User::findOrFail($id)->delete();
-        Student::where('user_id', $id)->delete();
+        $student = Student::findOrFail($id);
+        User::findOrFail($student->user_id)->delete();
+        $student->delete();
         return response()->json('Success', 200);
     }
 
     /* Validation Request */
-    public function validation($request)
+    public function validation($request, $id=0)
     {
         return Validator::make($request, [
             'name'          => 'required',
             'gender'        => 'required',
             'dob'           => 'required|date',
             'address'       => 'required',
-            'email'         => 'sometimes|required|email|unique:users', // give condition for email if update
+            'email'         => 'required|email|unique:users,email,'. $id, // give condition for email if update
             'password'      => 'required|confirmed',
         ])->validate();
     }
