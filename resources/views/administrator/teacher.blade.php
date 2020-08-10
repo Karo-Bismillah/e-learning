@@ -185,6 +185,7 @@
                         console.log('Success:', data);
                         table.draw();
                         resetForm();
+                        $('#formTeacherModal').modal('hide');
                     },
                     error: function(data) {
                         var errors = data.responseJSON;
@@ -222,9 +223,11 @@
                     $('#address').text(data.address);
                     $('#email').val(data.email);
                     $('#password').val('no changes');
+                    $('#password-confirm').val('no changes');
                     $('#status').val(data.status);
                     $('#action').val('update');
                     $('#action').text('Update');
+                    $('#actionLabel').text('Edit Teacher');
                 },
                 error: function(data) {
                     var errors = data.responseJSON;
@@ -279,7 +282,8 @@
         $('#message').html("")
         document.getElementById("formTeacher").reset();
         $('#action').val('create');
-        $('#actionLabel').text('Create');
+        $('#action').text('Create');
+        $('#actionLabel').text('Create New Teacher');
     }
 </script>
 

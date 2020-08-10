@@ -11,18 +11,20 @@
 
     .select2-selection__rendered {
         font-size: 12px;
-        font-weight:normal;
+        font-weight: normal;
     }
+
     .select2-results__option {
         font-size: 12px;
-        font-weight:normal;
+        font-weight: normal;
     }
 </style>
 <!-- select2 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 <!-- select2-bootstrap4-theme -->
-<link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"> <!-- for live demo page -->
+<link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css"
+    rel="stylesheet"> <!-- for live demo page -->
 @endpush
 {{-- end styles --}}
 
@@ -59,7 +61,8 @@
                 <h6 class="m-0">Data Students</h6>
             </div>
             <div class="col-md-6">
-                <button onclick="resetForm()" class="btn btn-primary float-right" data-toggle="modal" data-target="#formStudentModal">
+                <button onclick="resetForm()" class="btn btn-primary float-right" data-toggle="modal"
+                    data-target="#formStudentModal">
                     <i class="material-icons mr-1">person_add</i> Create New Student</button>
             </div>
         </div>
@@ -248,6 +251,7 @@
                     $('#status').val(data.status);
                     $('#action').val('update');
                     $('#action').text('Update');
+                    $('#actionLabel').text('Edit Student');
                 },
                 error: function(data) {
                     var errors = data.responseJSON;
@@ -320,12 +324,14 @@
         $('#message').html("")
         document.getElementById("formStudent").reset();
         $('#action').val('create');
-        $('#actionLabel').text('Create');
+        $('#action').val('Create');
+        $('#actionLabel').text('Create New Student');
     }
 </script>
 
 {{-- start modal --}}
-<div class="modal fade" id="formStudentModal" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="formStudentModal" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -357,7 +363,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="addrress">Address</label>
-                                <textarea name="address" id="address" cols="30" rows="2" class="form-control"></textarea>
+                                <textarea name="address" id="address" cols="30" rows="2"
+                                    class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -371,7 +378,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Confirm Password</label>
-                                <input type="password" id="password-confirm" name="password_confirmation" class="form-control">
+                                <input type="password" id="password-confirm" name="password_confirmation"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="feFirstName">Class</label>
