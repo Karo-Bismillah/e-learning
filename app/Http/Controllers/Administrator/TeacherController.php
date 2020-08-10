@@ -130,7 +130,7 @@ class TeacherController extends Controller
             'dob'           => 'required|date',
             'phone'         => 'required|numeric',//validation must be entirely numeric
             'address'       => 'required',
-            'email'         => 'sometimes|required|email', // give condition for email if update
+            'email'         => 'sometimes|required|email|unique:users', // give condition for email if update
             'password'      => 'required|confirmed',
             'status'        => 'required|boolean',
         ])->validate();

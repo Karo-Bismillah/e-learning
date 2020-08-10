@@ -118,7 +118,7 @@ class StudentController extends Controller
             'gender'        => 'required',
             'dob'           => 'required|date',
             'address'       => 'required',
-            'email'         => 'sometimes|required|email', // give condition for email if update
+            'email'         => 'sometimes|required|email|unique:users', // give condition for email if update
             'password'      => 'required|confirmed',
         ])->validate();
     }
