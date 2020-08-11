@@ -69,3 +69,20 @@ Route::group(['prefix' => '/admin/classroom'], function () {
     /* Dropdown json */
     Route::get('/list-teacher', 'Administrator\ClassroomController@teacher')->name('listTeacher');
 });
+
+/* Route Subject Matter */
+Route::group(['prefix' => '/admin/subjectmatter'], function () {
+    /* Route GET */
+    Route::get('/', 'Administrator\SubjectMatterController@index')->name('indexSubjectMatter');
+    Route::get('/edit/{id}', 'Administrator\SubjectMatterController@edit');
+    Route::get('/delete/{id}', 'Administrator\SubjectMatterController@delete');
+
+    /* Route POST */
+    Route::post('/create-subjectmatter', 'Administrator\SubjectMatterController@create')->name('createSubjectMatter');
+    Route::post('/update-subjectmatter', 'Administrator\SubjectMatterController@update')->name('updateSubjectMatter');
+
+    /* DataTable */
+    Route::get('/json-subjectmatter', 'Administrator\SubjectMatterController@dataTable')->name('jsonSubjectMatter');
+    /* Dropdown json */
+    Route::get('/list-course', 'Administrator\SubjectMatterController@course')->name('listCourse');
+});
