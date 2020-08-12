@@ -17,6 +17,7 @@
         href="{{ url('assets/styles/shards-dashboards.1.1.0.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/styles/extras.1.1.0.min.css') }}">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <link rel="stylesheet" href="{{ url('assets/custom.css') }}">
     @stack('styles')
 </head>
 

@@ -1,0 +1,32 @@
+/* For datatable custom style */
+
+.dataTables_wrapper {
+    font-size: 14px
+}
+
+.select2-selection__rendered {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.select2-results__option {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+/* For datatable responsive */
+
+table.dataTable th:nth-child(1) {
+    width: 25px;
+    max-width: 15%;
+    word-break: break-all;
+    white-space: pre-line;
+}
+
+table.dataTable td:nth-child(1) {
+    width: 25px;
+    max-width: 15%;
+    word-break: break-all;
+    white-space: pre-line;
+}

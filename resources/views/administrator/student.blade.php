@@ -4,21 +4,6 @@
 @push('styles')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.bootstrap4.min.css">
-<style>
-    .dataTables_wrapper {
-        font-size: 14px
-    }
-
-    .select2-selection__rendered {
-        font-size: 12px;
-        font-weight: normal;
-    }
-
-    .select2-results__option {
-        font-size: 12px;
-        font-weight: normal;
-    }
-</style>
 <!-- select2 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
