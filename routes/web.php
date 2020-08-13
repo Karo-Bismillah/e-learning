@@ -21,7 +21,22 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/* Route Course */
+Route::group(['prefix' => '/admin/course'], function () {
+    /* Route GET */
+    Route::get('/', 'Administrator\CourseController@index')->name('indexCourse');
+    Route::get('/edit/{id}', 'Administrator\CourseController@edit');
+    Route::get('/delete/{id}', 'Administrator\CourseController@delete');
 
+    /* Route POST */
+    Route::post('/create-course', 'Administrator\CourseController@create')->name('createCourse');
+    Route::post('/update-course', 'Administrator\CourseController@update')->name('updateCourse');
+
+    /* DataTable */
+    Route::get('/json-course', 'Administrator\CourseController@dataTable')->name('jsonCourse');
+});
+
+/* Route Teacher */
 Route::group(['prefix' => '/admin/teacher'], function () {
     /* Route GET */
     Route::get('/', 'Administrator\TeacherController@index')->name('indexTeacher');
